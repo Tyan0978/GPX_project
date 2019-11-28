@@ -50,3 +50,8 @@ tracks = np.array(tracks_list).reshape(index,3)
 #print(tracks[3,1])
 
 fin.close()
+
+## plot locations
+
+plt.plot(tracks[:,0],tracks[:,1])
+plt.show()
