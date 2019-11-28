@@ -14,10 +14,9 @@ minlon = float(bounds[1].strip('minlo="'))
 maxlat = float(bounds[2].strip('maxlt="'))
 maxlon = float(bounds[3].strip('maxlon="/>'))
 
-print(minlat,minlon,maxlat,maxlon)
+#print(minlat,minlon,maxlat,maxlon)
 
 # get every points in an ndarray
 
-fin.close()
 
-# create an array that every row is a point
+fin.close()
