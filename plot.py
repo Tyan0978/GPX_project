@@ -22,7 +22,7 @@ for i in range(6):
     fin.readline()
 
 tracks_list = []
-index = 0
+amount = 0
 while True:
     hrzt_line = fin.readline()
     if hrzt_line.strip() == '</trkseg>': break
@@ -37,12 +37,12 @@ while True:
 
     fin.readline()
     
-    index += 1
+    amount += 1
 
 #for i in range(3):
-#    print(tracks_list[i])
+    print(tracks_list[i])
 
-tracks = np.array(tracks_list).reshape(index,3)
+tracks = np.array(tracks_list).reshape(amount,3)
 
 #for i in range(6):
 #    print(tracks[i])
