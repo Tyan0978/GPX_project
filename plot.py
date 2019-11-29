@@ -60,7 +60,16 @@ plt.ylabel('lattitude',fontsize = 15)
 plt.title('Shoshone',fontsize = 20)
 plt.axis('equal')
 
-
 plt.colorbar()
+
+## plot moving direction
+
+arrow = tracks[::100,:2]
+arrow[:,0] += 0.01
+
+for i in range(2,amount//100,2):
+    plt.annotate('', xy=(arrow[i,1],arrow[i,0]), xytext=(arrow[i-1,1],arrow[i-1,0]),arrowprops=dict(facecolor='none',shrink=0.05))
+
+## show figure
 
 plt.show()
