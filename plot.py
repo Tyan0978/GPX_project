@@ -40,7 +40,7 @@ while True:
     amount += 1
 
 #for i in range(3):
-    print(tracks_list[i])
+   # print(tracks_list[i])
 
 tracks = np.array(tracks_list).reshape(amount,3)
 
@@ -53,5 +53,6 @@ fin.close()
 
 ## plot locations
 
-plt.plot(tracks[:,0],tracks[:,1])
+plt.scatter(tracks[:,0],tracks[:,1],c=tracks[:,2],s=5)
+plt.colorbar()
 plt.show()
