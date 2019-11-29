@@ -53,6 +53,14 @@ fin.close()
 
 ## plot locations
 
-plt.scatter(tracks[:,0],tracks[:,1],c=tracks[:,2],s=5)
+plt.scatter(tracks[:,1],tracks[:,0],c=tracks[:,2],s=5)
+
+plt.xlabel('longtitude',fontsize = 15)
+plt.ylabel('lattitude',fontsize = 15)
+plt.title('Shoshone',fontsize = 20)
+plt.axis('equal')
+
+
 plt.colorbar()
+
 plt.show()
