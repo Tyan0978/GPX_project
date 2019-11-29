@@ -51,6 +51,13 @@ tracks = np.array(tracks_list).reshape(amount,3)
 
 fin.close()
 
+## distance
+
+d = []
+for i in range(1,amount):
+    d.append( np.sqrt((tracks[i,0]-tracks[i-1,0])**2 + (tracks[i,1]-tracks[i-1,1])**2 + (tracks[i,2]-tracks[i-1,2])**2 ) )
+dis = np.array(d)
+
 ## plot locations
 
 plt.scatter(tracks[:,1],tracks[:,0],c=tracks[:,2],s=5)
@@ -73,3 +80,4 @@ for i in range(2,amount//100,2):
 ## show figure
 
 plt.show()
+
