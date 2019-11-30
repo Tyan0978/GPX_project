@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
+import sys
+sys.setrecursionlimit(10000)
 ## open file & read
 
 fin = open('shoshone.gpx')
@@ -34,7 +35,7 @@ while True:
 
     ele_line = fin.readline().strip('<el>/ \n')
     tracks_list.append( float(ele_line) )
-
+  
     fin.readline()
     
     amount += 1
@@ -55,11 +56,29 @@ fin.close()
 
 d = []
 for i in range(1,amount):
-    d.append( np.sqrt((tracks[i,0]-tracks[i-1,0])**2 + (tracks[i,1]-tracks[i-1,1])**2 + (tracks[i,2]-tracks[i-1,2])**2 ) )
-dis = np.array(d)
+    d.append( np.sqrt((tracks[i,0]-tracks[i-1,0])**2 + (tracks[i,1]-tracks[i-1,1])**2 ) )
+d.insert(0,0)
+#print(len(d) == amount)
+print(d[0]+d[1]+d[2])
+
+total_dis_list = []
+def add(i):
+    if i <= 0 :
+        return d[0]
+    else:
+        return d[i]+add(i-1)
+for i in range(0,amount):
+    total = add(i)
+    total_dis_list.append(total)
+#print(total_dis_list)
+total_dis = np.array(total_dis_list)    
 
 ## plot locations
 
+## calculate the distance you walk through
+
+ 
+plt.plot(total_dis[0:],tracks[:,2])
 plt.scatter(tracks[:,1],tracks[:,0],c=tracks[:,2],s=5)
 
 plt.xlabel('longtitude',fontsize = 15)
