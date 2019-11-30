@@ -76,9 +76,8 @@ total_dis = np.array(total_dis_list)
 ## plot locations
 
 ## calculate the distance you walk through
+fig = plt.figure()
 
- 
-plt.plot(total_dis[0:],tracks[:,2])
 plt.scatter(tracks[:,1],tracks[:,0],c=tracks[:,2],s=5)
 
 plt.xlabel('longtitude',fontsize = 15)
@@ -88,8 +87,10 @@ plt.axis('equal')
 
 plt.colorbar()
 
-## plot moving direction
+ax1 = fig.add_axes([0.2,0.6,0.25,0.25])
+ax1.plot(total_dis[0:],tracks[:,2]
 
+## plot moving direction
 arrow = tracks[::100,:2]
 arrow[:,0] += 0.01
 
