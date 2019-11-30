@@ -68,15 +68,13 @@ fig = plt.figure()
 
 plt.scatter(tracks[:,1],tracks[:,0],c=tracks[:,2],s=5)
 
-plt.xlabel('longtitude',fontsize = 15)
-plt.ylabel('lattitude',fontsize = 15)
+plt.xlabel('Longtitude',fontsize = 15)
+plt.ylabel('Latitude',fontsize = 15)
 plt.title('Shoshone',fontsize = 20)
 plt.axis('equal')
 
 plt.colorbar()
 
-ax1 = fig.add_axes([0.2,0.6,0.25,0.25])
-ax1.plot(total_dis[0:],tracks[:,2])
 
 ## plot moving direction
 arrow = tracks[::100,:2]
@@ -86,5 +84,8 @@ for i in range(2,amount//100,2):
     plt.annotate('', xy=(arrow[i,1],arrow[i,0]), xytext=(arrow[i-1,1],arrow[i-1,0]),arrowprops=dict(facecolor='none',shrink=0.05))
 
 ## show figure
+
+ax1 = fig.add_axes([0.2,0.6,0.25,0.25])
+ax1.plot(total_dis[0:],tracks[:,2])
 
 plt.show()
