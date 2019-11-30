@@ -15,8 +15,6 @@ minlon = float(bounds[1].strip('minlo="'))
 maxlat = float(bounds[2].strip('maxlt="'))
 maxlon = float(bounds[3].strip('maxlon="/>'))
 
-#print(minlat,minlon,maxlat,maxlon)
-
 ## get every points in a list, then ndarray
 
 for i in range(6):
@@ -29,7 +27,7 @@ while True:
     if hrzt_line.strip() == '</trkseg>': break
 
     hrzt_list = hrzt_line.strip('<> trkpt\n').split()
-    #print(hrzt_list)
+
     tracks_list.append( float(hrzt_list[0].strip('lat="')) )
     tracks_list.append( float(hrzt_list[1].strip('lon="')) )
 
@@ -40,15 +38,7 @@ while True:
     
     amount += 1
 
-#for i in range(3):
-   # print(tracks_list[i])
-
 tracks = np.array(tracks_list).reshape(amount,3)
-
-#for i in range(6):
-#    print(tracks[i])
-
-#print(tracks[3,1])
 
 fin.close()
 
@@ -58,8 +48,6 @@ d = []
 for i in range(1,amount):
     d.append( np.sqrt((tracks[i,0]-tracks[i-1,0])**2 + (tracks[i,1]-tracks[i-1,1])**2 ) )
 d.insert(0,0)
-#print(len(d) == amount)
-print(d[0]+d[1]+d[2])
 
 total_dis_list = []
 def add(i):
@@ -70,7 +58,7 @@ def add(i):
 for i in range(0,amount):
     total = add(i)
     total_dis_list.append(total)
-#print(total_dis_list)
+
 total_dis = np.array(total_dis_list)    
 
 ## plot locations
@@ -88,7 +76,7 @@ plt.axis('equal')
 plt.colorbar()
 
 ax1 = fig.add_axes([0.2,0.6,0.25,0.25])
-ax1.plot(total_dis[0:],tracks[:,2]
+ax1.plot(total_dis[0:],tracks[:,2])
 
 ## plot moving direction
 arrow = tracks[::100,:2]
@@ -100,4 +88,3 @@ for i in range(2,amount//100,2):
 ## show figure
 
 plt.show()
-
